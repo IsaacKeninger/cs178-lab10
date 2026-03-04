@@ -72,7 +72,15 @@ def delete_movie():
     Prompt user for a Movie Title.
     Delete that item from the database.
     """
-    print("deleting movie")
+    try:
+        title = input("Which movie do you want to delete? ")
+        table.delete_item(
+            Key={
+                'Title': title
+            }
+        )
+    except:
+        print("failed in deleting movie.")
 
 def query_movie():
     """
